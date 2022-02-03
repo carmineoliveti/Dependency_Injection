@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springfamework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- dipendenza -->
+<bean id="myFortune" class="com.canninu.constructor.HappyFortuneService"></bean>
+
+<!-- constructor injection -->
+<bean id="footballPlayer" class="com.canninu.constructor.FootballPlayer">
+<constructor-arg ref="myFortune"></constructor-arg> </bean>
+
+<bean id="tennisPlayer" class="com.canninu.constructor.TennisPlayer">
+<constructor-arg ref="myFortune"></constructor-arg></bean>
+
+<!-- setter injection -->
+<bean id="myBasketPlayer" class="com.canninu.setter.BasketPlayer">
+<property name="fortuneService" ref="myFortune"></property></bean>
+
+<bean id="myPingPongPlayer" class="com.canninu.setter.PingPongPlayer">
+<property name="fortuneService" ref="myFortune"></property></bean>
+
+<!-- injecting literal values -->
+<bean id="football_player" class="com.canninu.injecting_literal_values.FootbaalPlayer">
+<property name="emailAddress" value="carlitosTevez@gmail.com"></property>
+<property name="team" value="Juventus"></property>
+</bean>
+
+</beans>

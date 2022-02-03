@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<!-- load the properties file: player.properties -->
+<context:property-placeholder location="classpath:player.properties"/>
+
+<bean id="fortuneService" class="com.canninu.injecting_value_from_properties_file.RandomFortunaService"></bean>
+
+<bean id="golfPlayer" class="com.canninu.injecting_value_from_properties_file.GolfPlayer">
+<constructor-arg ref="fortuneService"></constructor-arg>
+<property name="emailAddress" value="${p.email}"></property>
+<property name="team" value="${p.team}"></property></bean>
+</beans>
